@@ -1,0 +1,11 @@
+Nowadays, many advanced measurement methods have been developed to observe the exact binding of histone modifications. However, it is a very time-consuming and expensive experiment to measure different histone modifications on each cell line. In order to solve this dilemma, In recent researches, there have been many methods to predict various histone modifications through DNA sequences. However, DNA sequences cannot provide any cell line-specific information, which leads to a big bottleneck in predicting histone modifications in different cell lines. Therefore, this study introduced DNA sequences and methylation data, and utilized convolutional neural network to improve the prediction of histone modifications in different cell lines.
+
+In this research, the special structure of the "inception module" is added to the convolutional neural network to capture features of different sequence lengths at the same time. Next, we use the "stratified mini-batch" mechanism to effectively train the model on the unbalanced dataset. We finally train the mixed DNA sequences and methylation data based on the above methods, and extract feature vectors with cell line-specific information to predict histone modifications.
+
+In the experiment, the results showed that the model we designed outperforms the baseline model, especially in the most unbalanced class to get the most obvious improvement. Besides, we analyze the effects of different input data for performance. The experimental results show that the model trained with DNA sequence and methylation data has significantly better performance in any histone modification than amodel trained with only one type of data. Finally, we further used visualization tools to find out that the model we designed could indeed learn cell line-specific information.
+
+Based on the above results and analysis, we confirmed that the use of an improved convolutional neural network combined with DNA sequence and methylation data is helpful for predicting histone variation in different cell lines.
+
+\begin{flushleft}
+{{\bf Keywords}: Convolutional Neural Network, Data Imputation, Histone Modification, DNA methylation, Specificity of Cell Line}
+\end{flushleft}

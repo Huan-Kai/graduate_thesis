@@ -1,0 +1,18 @@
+\hspace{24pt}
+
+\section{Conclusions}
+In this thesis, we attempt to design a novel CNN framework to predict six core histone modifications from DNA sequences and methylation, for improving data imputation in cell line-specific cases. In our model, we introduce inception module and stratified mini-batch to enhance prediction. By the special architecture of inception module, the use of this module gains better performance than conventional CNN, which is published by DeepSEA. Moreover, in order to handle imbalanced learning, we utilize stratified mini-batch to effectively improve prediction of imbalanced classes, without decrease performance of other classes.
+
+Our model successfully capture useful information from DNA sequences and methylation to predict histone modifications. Shown in our designed experiments, we analyze cases in different combinations of input features. The results show that model integrating features from DNA sequences and methylation outperforms only using features of DNA sequences. Furthermore, we observe that DNA methylation definitely provides cell line-specific insight for model, by visualization.
+
+Therefore, we verify that the DNA methylation strengthens the ability of data imputation for cell line-specific cases, with deep learning model.
+
+\section{Future Work}
+According to our study, there are many issues for future researches to explore. We summarize as follow:
+
+\begin{itemize}
+\item[$\bullet$] Future studies could increase the number of cell lines to make model extract more overall information from different biosamples.
+\item[$\bullet$] Owing to histone is main element of nucleosome, we believe that powerful deep learning model may find out structure of DNA sequences. Therefore, future studies could investigate the association with nucleosome.
+\item[$\bullet$] Deep learning field is still growing. Future researches could explore more advanced frameworks whether all of them are good at dealing with this task.
+\end{itemize}
+
