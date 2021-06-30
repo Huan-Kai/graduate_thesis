@@ -102,7 +102,7 @@ But, the complex model is readily to overfitting, and is not easily trained on l
 \end{figure}
 
 \section{Model Architecture} \label{method}
-We select the convolutional neural network as our framework, which consists of multiple convolutional layers, pooling layers and fully connected layers, because convolutional layer is good at extracting motifs in genome. In addition, we add inception module into our model so that extract more representative features through kernels of different scales. The complete architecture is depicted in Figure\ref{f12}, where Figure\ref{f9}, detailed modules, are used. The details of the structure are explained and summarized as follows:
+We select the convolutional neural network as our framework, which consists of multiple convolutional layers, pooling layers and fully connected layers, because convolutional layer is good at extracting motifs in genome. In addition, we add inception module into our model so that extract more representative features through kernels of different scales. The complete architecture is depicted in Figure\ref{f12}, where detailed modules are used in Figure\ref{f9}. The details of the structure are explained and summarized as follows:
 
 \begin{figure}[H]
     \centering
@@ -132,7 +132,7 @@ In terms of fully connected layers, they are located at the end of stacked convo
     \label{f12}
 \end{figure}
 
-In terms of training methodology, our model is trained using stochastic gradient descent with momentum of 0.9 and learning rate of 0.01, and is trained using batch size of 300. For our loss function, we use the mean binary cross-entropy with sigmoid function \(\sigma()\) across all labels \emph{L}, shown in function (1). In the function(1), \emph{L} is the weight to scale the given to the loss of each positive element. It can deal with imbalance status in each class. According to Table\ref{t3}, our generated dataset is apparently imbalance in each class. Hence, we set the weights inversely proportional to percentage of positive peaks for each histone modification, to solve imbalanced condition.
+In terms of training methodology, our model is trained using stochastic gradient descent with momentum of 0.9 and learning rate of 0.01, and is trained using batch size of 300. For our loss function, we use the mean binary cross-entropy with sigmoid function \(\sigma\) across all labels $L$, shown in function (1). In the function(1), $w_l$ is the weight to scale the given to the loss of each positive element. It can deal with imbalance status in each class. According to Table\ref{t3}, our generated dataset is apparently imbalance in each class. Hence, we set the weights inversely proportional to percentage of positive peaks for each histone modification, to solve imbalanced condition.
 
 \[
    F(y, \hat{y}) = \frac{1}{L}\sum_{l=1}^{L}-(w_l*y_i^llog\sigma(\hat{y}_i^l)+(1-y_i^l)log(1-\sigma(\hat{y}_i^l)))\ \ (1)
