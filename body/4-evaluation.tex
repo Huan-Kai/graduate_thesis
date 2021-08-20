@@ -25,7 +25,7 @@ Therefore, we choose datasets, that are less amount of warnings and lower level 
 \section{Evaluation Metrics} \label{metric}
 We use two metrics to evaluate our model. There are respectively area under the receiver operating characteristics curve (ROC) and area under the precision-recall curve (PRC). These metrics are common evaluations of a classifier’s prediction performance, which are threshold-free measures.
 
-Before introducing area under ROC and area under PRC, we first introduce confusion matrix because these metrics are composed of the elements of this matrix. The confusion matrix consists of true positive (TP), false positive (FP), true negative (TN) and false negative (FN). shown in Figure\ref{f14}. Each row of the matrix represents the instances in an actual class while each column represents the instances in a predicted class, or vice versa. The several basic metrics are calculated by elements of confusion matrix, including precision, recall (also called sensitivity) and specificity \cite{saito2015precision}, shown in function(2) ,(3) and (4).
+Before introducing area under ROC and area under PRC, we first introduce confusion matrix because these metrics are composed of the elements of this matrix. The confusion matrix consists of true positive (TP), false positive (FP), true negative (TN) and false negative (FN). shown in Figure~\ref{f14}. Each row of the matrix represents the instances in an actual class while each column represents the instances in a predicted class, or vice versa. The several basic metrics are calculated by elements of confusion matrix, including precision, recall (also called sensitivity) and specificity \cite{saito2015precision}, shown in function(2) ,(3) and (4).
 
 \begin{figure}[H]
     \centering
@@ -40,7 +40,7 @@ Before introducing area under ROC and area under PRC, we first introduce confusi
 \[Precision : \frac{TP}{TP+FP}\ (2)\]
 \[Recall(sensitivity) : \frac{TP}{TP+FN}\ (3),\ Specificity : \frac{TN}{TN+FP}\ (4)\]
 
-Then, ROC is plotted by sensitivity and specificity. PRC is plotted by precision and recall. Areas under these curves are metrics that evaluating our model. In addition, these curves provide useful information of baseline (random classifier). The baseline showed in ROC is a diagonal line, whereas the baseline showed in PRC is dynamic. The baseline of PRC is determined by the ratio of positives (P) and negatives (N) as y = P / (P+N) \cite{saito2015precision}, shown in Figure\ref{f15}.
+Then, ROC is plotted by sensitivity and specificity. PRC is plotted by precision and recall. Areas under these curves are metrics that evaluating our model. In addition, these curves provide useful information of baseline (random classifier). The baseline showed in ROC is a diagonal line, whereas the baseline showed in PRC is dynamic. The baseline of PRC is determined by the ratio of positives (P) and negatives (N) as y = P / (P+N) \cite{saito2015precision}, shown in Figure~\ref{f15}.
 
 \begin{figure}[H]
     \centering
@@ -56,7 +56,7 @@ Then, ROC is plotted by sensitivity and specificity. PRC is plotted by precision
 In order to validate whether introducing techniques and features are helpful to our model. we design a series of following experiments to observe results. Finally, we will show the results of best model trained on all cell lines in Section\ref{cross}.
 
 \subsection{Baseline}
-We construct a CNN according to the architecture of DeepSEA \cite{zhou2015predicting}, which acts as baseline. The baseline is depicted in Figure\ref{f16}, and is trained on same training methodology with our model, described in Section\ref{method}. Only difference is that amount of neurons in the last fully connected layer. We focus on data imputation of six histone modifications, instead of interaction of various chromatin states. Therefore, we change the amount of neurons in the last fully connected layer to six, that the number is amount of histone modifications we want to predict.
+We construct a CNN according to the architecture of DeepSEA \cite{zhou2015predicting}, which acts as baseline. The baseline is depicted in Figure~\ref{f16}, and is trained on same training methodology with our model, described in Section\ref{method}. Only difference is that amount of neurons in the last fully connected layer. We focus on data imputation of six histone modifications, instead of interaction of various chromatin states. Therefore, we change the amount of neurons in the last fully connected layer to six, that the number is amount of histone modifications we want to predict.
 
 \begin{figure}[H]
     \centering
@@ -70,10 +70,10 @@ We construct a CNN according to the architecture of DeepSEA \cite{zhou2015predic
 \subsection{Inception Module}
 To experimental efficiency, we first select nine partitions (1369713 windows) of K562 to train on baseline and our model, and then evaluate on one partition (152191 windows) of K562 to compare the results of these models. Accroding to Section\ref{metric}, we use area under ROC (AUROC) and area under PRC (AUPRC) as evaluation metrics.
 
-Here, we want to observe the change of results after adding inception module into our model. Our model is named “Inception” in following tables. Apparently, we improve the prediction in all cases compared to baseline, shown in Table\ref{t4} and Table\ref{t5}.
+Here, we want to observe the change of results after adding inception module into our model. Our model is named “Inception” in following tables. Apparently, we improve the prediction in all cases compared to baseline, shown in Table~\ref{t4} and Table~\ref{t5}.
 
 \subsection{Stratified Mini-batch} \label{strat}
-According to same settings with above experiment, we want to test whether stratified mini-batch is good for our task, that is imbalanced multi-label classification, shown in Table\ref{t4} and Table\ref{t5}. In the following tables, we use subscript to represent the model adding stratified mini-batch. In addition, we test on not only our model but also baseline, in order to check whether this mechanism only helps on special case.
+According to same settings with above experiment, we want to test whether stratified mini-batch is good for our task, that is imbalanced multi-label classification, shown in Table~\ref{t4} and Table~\ref{t5}. In the following tables, we use subscript to represent the model adding stratified mini-batch. In addition, we test on not only our model but also baseline, in order to check whether this mechanism only helps on special case.
 
 \begin{table}[H]%加入table環境指令以控制表格的位置、編號與標題，[h]代表將表格置於here，其他位置的標示請參考手冊
     \centering
@@ -114,7 +114,7 @@ According to same settings with above experiment, we want to test whether strati
 Regardless of the frameworks in above table, model adding this mechanism outperform original model. And, the model, which introduces inception module and stratified mini-batch into, gets the best results in above experiments. Hence, we decide to use this model to extract features from DNA sequences and DNA methylation signal, and then use these features to predict histone modifications.
 
 \subsection{DNA methylation}
-After confirming these techniques is helpful, we mainly want to observe how much different input features influence the results of model. We separately extract features from only DNA sequences, only DNA methylation signal and both, as well as represent them by subscript in following tables. It is same with above experiments that all models are trained on K562. In addition, we further check whether the framework of DeepSEA can also improve predition by adding features from DNA methylation signal, shown in Table\ref{t6}, Table\ref{t7}, Table\ref{t8} and Table\ref{t9}.
+After confirming these techniques is helpful, we mainly want to observe how much different input features influence the results of model. We separately extract features from only DNA sequences, only DNA methylation signal and both, as well as represent them by subscript in following tables. It is same with above experiments that all models are trained on K562. In addition, we further check whether the framework of DeepSEA can also improve predition by adding features from DNA methylation signal, shown in Table~\ref{t6}, Table~\ref{t7}, Table~\ref{t8} and Table~\ref{t9}.
 
 \begin{table}[H]%加入table環境指令以控制表格的位置、編號與標題，[h]代表將表格置於here，其他位置的標示請參考手冊
     \centering
@@ -191,7 +191,7 @@ After confirming these techniques is helpful, we mainly want to observe how much
 It is obvious that models, which integrating DNA sequences and methylation signal, get better performance than models, which only extract feature from DNA sequences. We use underline to represent the better performance in same framework, that comparing the models trained by only DNA sequences and only DNA methylation signal. Interestingly, the models predicting H3K4me1, H3K36me3 and H3K27me3 only input the features from DNA methylation signal has betters results than from DNA sequences. Therefore, DNA methylation provide more insight for model and improve prediction.
 
 \subsection{Cross cell lines} \label{cross}
-According to a series of experiments, we confirm that introducing techniques and features are good for our model. Next, we train $Inception_{DNA+Meth}$ on  different cell lines, including A549, GM12878 and K562, to get more information across cell lines. Similarly, we select nine partitions of each cell line to train, and evaluate on one partition of each cell line. Number of data points for training and testing separately are 4760181 and 528909. We show the mean of performance in the Table\ref{t10} and Table\ref{t11}.
+According to a series of experiments, we confirm that introducing techniques and features are good for our model. Next, we train $Inception_{DNA+Meth}$ on  different cell lines, including A549, GM12878 and K562, to get more information across cell lines. Similarly, we select nine partitions of each cell line to train, and evaluate on one partition of each cell line. Number of data points for training and testing separately are 4760181 and 528909. We show the mean of performance in the Table~\ref{t10} and Table~\ref{t11}.
 
 \begin{table}[H]%加入table環境指令以控制表格的位置、編號與標題，[h]代表將表格置於here，其他位置的標示請參考手冊
     \centering
